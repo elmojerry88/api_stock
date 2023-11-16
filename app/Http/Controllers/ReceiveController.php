@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ReceiveStock;
 use Illuminate\Http\Request;
 use App\Models\Receive_weapons;
+use App\Models\Weapons;
 
 class ReceiveController extends Controller
 {
@@ -24,7 +26,11 @@ class ReceiveController extends Controller
     {
         $receive = $request->validated();
 
+        //$weapon = Weapons::findOrfail($id);
+
         Receive_weapons::create($receive);
+
+        event(new ReceiveStock($receive));
 
         return response()->json('Entrada registrada com sucesso');
     }
