@@ -47,12 +47,7 @@ class WeaponController extends Controller
      */
     public function update(WeaponUpdateRequest $request, string $id)
     {
-        $weapon = Weapons::findOrFail($id);
-
-        $data = $request->validated();
-
-        $weapon->update($data);
-
+        $weapon = Weapons::findOrFail($id)->update($request->validated());
         return response()->json('Arma atualizada com sucesso');
 
 

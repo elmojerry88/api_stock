@@ -33,7 +33,7 @@ Route::prefix('weapon')->group(function () {
     Route::post('/store', [WeaponController::class, 'store']);
     Route::get('/{id}', [WeaponController::class, 'show']);
     Route::delete('/delete/{id}', [WeaponController::class, 'destroy'] );
-    Route::patch('/update/{id}', [WeaponController::class, 'update']);
+    //Route::patch('/update/{id}', [WeaponController::class, 'update']);
 });
 
 Route::prefix('user')->group(function () {
@@ -41,7 +41,7 @@ Route::prefix('user')->group(function () {
     Route::post('/store', [UserController::class, 'store']);
     Route::get('/{id}', [UserController::class, 'show']);
     Route::delete('/delete/{id}', [UserController::class, 'destroy'] );
-    Route::patch('/update/{id}', [UserController::class, 'update']);
+    //Route::patch('/update/{id}', [UserController::class, 'update']);
 });
 
 Route::prefix('officer')->group(function () {
@@ -49,7 +49,7 @@ Route::prefix('officer')->group(function () {
     Route::post('/store', [OfficerController::class, 'store']);
     Route::get('/{id}', [OfficerController::class, 'show']);
     Route::delete('/delete/{id}', [OfficerController::class, 'destroy'] );
-    Route::patch('/update/{id}', [OfficerController::class, 'update']);
+   // Route::patch('/update/{id}', [OfficerController::class, 'update']);
 });
 
 Route::prefix('receive')->group(function () {
@@ -57,7 +57,7 @@ Route::prefix('receive')->group(function () {
     Route::post('/store', [ReceiveController::class, 'store']);
     Route::get('/{id}', [ReceiveController::class, 'show']);
     Route::delete('/delete/{id}', [ReceiveController::class, 'destroy'] );
-    Route::patch('/update/{id}', [ReceiveController::class, 'update']);
+   // Route::patch('/update/{id}', [ReceiveController::class, 'update']);
 });
 
 Route::prefix('leave')->group(function () {
@@ -65,5 +65,5 @@ Route::prefix('leave')->group(function () {
     Route::post('/store', [LeaveController::class, 'store']);
     Route::get('/{id}', [LeaveController::class, 'show']);
     Route::delete('/delete/{id}', [LeaveController::class, 'destroy'] );
-    Route::patch('/update/{id}', [LeaveController::class, 'update']);
+   // Route::patch('/update/{id}', [LeaveController::class, 'update']);
 });
