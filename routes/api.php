@@ -20,12 +20,12 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::post('/signup', [LoginController::class, 'signup']);
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::post('/signup', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 
 Route::prefix('weapon')->group(function () {
@@ -49,7 +49,7 @@ Route::prefix('officer')->group(function () {
     Route::post('/store', [OfficerController::class, 'store']);
     Route::get('/{id}', [OfficerController::class, 'show']);
     Route::delete('/delete/{id}', [OfficerController::class, 'destroy'] );
-   // Route::patch('/update/{id}', [OfficerController::class, 'update']);
+    //Route::patch('/update/{id}', [OfficerController::class, 'update']);
 });
 
 Route::prefix('receive')->group(function () {

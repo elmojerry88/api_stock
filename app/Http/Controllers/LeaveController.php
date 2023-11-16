@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Leave_weapons;
 
 class LeaveController extends Controller
 {
@@ -11,7 +12,9 @@ class LeaveController extends Controller
      */
     public function index()
     {
-        //
+        $leave = Leave_weapons::all();
+
+        return response()->json($leave);
     }
 
     /**
@@ -19,7 +22,12 @@ class LeaveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $leave = $request->validated();
+
+        Leave_weapons::create($leave);
+
+        return response()->json('Saída registrada com sucesso');
+
     }
 
     /**
@@ -27,11 +35,13 @@ class LeaveController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $leave = Leave_weapons::findOrFail($id)->first();
+
+        return response()->json($leave);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in     storage.
      */
     public function update(Request $request, string $id)
     {
@@ -43,6 +53,8 @@ class LeaveController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // User::findOrFail($id)->delete();
+
+        // return response()->json('Saída eliminada com sucesso');
     }
 }

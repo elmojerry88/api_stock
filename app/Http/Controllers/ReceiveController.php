@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Receive_weapons;
 
 class ReceiveController extends Controller
 {
@@ -11,7 +12,9 @@ class ReceiveController extends Controller
      */
     public function index()
     {
-        //
+        $receive = Receive_weapons::all();
+
+        return response()->json($receive);
     }
 
     /**
@@ -19,7 +22,11 @@ class ReceiveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $receive = $request->validated();
+
+        Receive_weapons::create($receive);
+
+        return response()->json('Entrada registrada com sucesso');
     }
 
     /**
@@ -27,8 +34,11 @@ class ReceiveController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $receive = Receive_weapons::findOrFail($id)->first();
+
+        return response()->json($receive);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -43,6 +53,6 @@ class ReceiveController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Receive_weapons::findOrFail($id)->delete();
     }
 }
