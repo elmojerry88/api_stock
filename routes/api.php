@@ -7,6 +7,7 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReceiveController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------

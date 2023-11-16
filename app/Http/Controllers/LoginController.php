@@ -11,7 +11,6 @@ class LoginController extends Controller
         $credencials = $request->only([
             'email',
             'password',
-            'device_name',
         ]);
         
         $user = Customers::where('email', $request->email)->first();
@@ -28,7 +27,7 @@ class LoginController extends Controller
 
 
         
-        $user = $user->createToken($request->device_name)->plainTextToken;
+        $user = $user->createToken($request->email)->plainTextToken;
         return response($user, 200)
                     ->header('Content-Type', 'aplication/json');
     }

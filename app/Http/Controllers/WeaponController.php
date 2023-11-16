@@ -49,7 +49,7 @@ class WeaponController extends Controller
     {
         $weapon = Weapons::findOrFail($id);
 
-        $data = $request->all();
+        $data = $request->validated();
 
         $weapon->update($data);
 
