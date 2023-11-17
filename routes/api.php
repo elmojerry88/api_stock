@@ -24,7 +24,7 @@ use App\Http\Controllers\UserController;
 //     return $request->user();
 // });
 
-Route::post('/signup', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 
