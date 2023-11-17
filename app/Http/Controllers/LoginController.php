@@ -28,10 +28,12 @@ class LoginController extends Controller
         
         $user->tokens()->delete();
 
+        $data = [
+            'token' => $user->createToken($request->email)->plainTextToken,
+            'user' => $user,
+        ];
 
-        
-        $user = $user->createToken($request->email)->plainTextToken;
-        return response($user, 200)
+        return response($data, 200)
                     ->header('Content-Type', 'aplication/json');
     }
 
