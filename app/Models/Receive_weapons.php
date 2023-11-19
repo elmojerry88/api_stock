@@ -10,10 +10,10 @@ class Receive_weapons extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'second_name',
-        'email',
-        'password',
-        'role',
+        'officer',
+        'nip_officer',
+        'qtd_bullets',
+        'weapon',
+        'weapon_number',
     ];
 }

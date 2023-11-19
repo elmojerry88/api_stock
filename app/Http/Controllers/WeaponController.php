@@ -60,4 +60,11 @@ class WeaponController extends Controller
     {
         Weapons::findOrFail($id)->delete();
     }
+
+    public function countWeapons()
+    {
+        $weapons = Weapons::count();
+
+        return response($weapons);
+    }
 }

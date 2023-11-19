@@ -30,16 +30,20 @@ class UserController extends Controller
         
         //dd($user);
         User::create($user);
-
-        return response()->json('Usuário criado com sucesso');
+        $message = 'usuário criado';
+        return response($message,200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
         
+
+        // $users = $users->count();
+
+        return response()->json($users);
     }
 
     /**
@@ -69,5 +73,12 @@ class UserController extends Controller
         User::findOrFail($id)->delete();
 
         return response()->json('Usuario eliminado com sucesso');
+    }
+
+    public function countUsers()
+    {
+        $users = User::count();
+
+        return response()->json($users);
     }
 }

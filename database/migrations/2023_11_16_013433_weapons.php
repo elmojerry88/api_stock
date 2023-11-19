@@ -14,7 +14,7 @@ return new class extends Migration
         
         Schema::create('weapons', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('model');
             $table->string('type');
             $table->string('qtd_weapons_bullets');

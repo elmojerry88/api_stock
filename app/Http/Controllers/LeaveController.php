@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Leave_weapons;
+use App\Models\Weapons;
+use App\Models\Police_officers;
 
 class LeaveController extends Controller
 {
@@ -22,11 +24,38 @@ class LeaveController extends Controller
      */
     public function store(Request $request)
     {
-        $leave = $request->validated();
+        $leave = $request->only([
+            'id_officer',
+            'id_weapon',
+            'qtd_bullets',
+            'weapon_number',
+        ]);
 
-        Leave_weapons::create($leave);
+        $id_weapon = $leave['id_weapon'];
 
-        return response()->json('Saída registrada com sucesso');
+        $id_officer = $leave['id_officer'];
+
+        $officer = Police_officers::findOrFail($id_officer);
+
+        $weapon = Weapons::findOrFail($id_weapon);
+        
+        $weapon->decrement('quantity_stock');
+
+        $data['officer'] = $officer->name;
+        $data['nip_officer'] = $officer->nip;
+        $data['weapon'] = $weapon->name ."-". $weapon->model;
+        $data['qtd_bullets'] = $request->qtd_bullets;
+        $data['weapon_number'] = $request->weapon_number;
+
+        // dd($leave);
+
+        // dd($weapon);
+        #acessar o stock e diminuir 
+        
+        Leave_weapons::create($data);
+
+
+        return response('Saída registrada com sucesso');
 
     }
 
@@ -56,5 +85,12 @@ class LeaveController extends Controller
         // User::findOrFail($id)->delete();
 
         // return response()->json('Saída eliminada com sucesso');
+    }
+
+    public function countLeaves()
+    {
+        $leave = Leave_weapons::count();
+
+        return response($leave);
     }
 }

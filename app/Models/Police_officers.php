@@ -14,5 +14,6 @@ class Police_officers extends Model
         'division',
         'category',
         'nip',
+        'gender',
     ];
 }

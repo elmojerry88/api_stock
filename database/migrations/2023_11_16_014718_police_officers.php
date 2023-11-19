@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('division');
             $table->string('category');
+            $table->enum('gender' ,['masculino', 'feminino', 'outro']);
             $table->string('nip')->unique();
             $table->timestamps();
         });

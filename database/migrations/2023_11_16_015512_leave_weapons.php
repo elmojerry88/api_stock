@@ -14,10 +14,11 @@ return new class extends Migration
         
         Schema::create('leave_weapons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user')->references('id')->on('users');
-            $table->foreignId('id_police_officer')->references('id')->on('police_officers');
-            $table->foreignId('id_weapon')->references('id')->on('weapons');
+            $table->string('officer');
+            $table->string('nip_officer');
+            $table->string('weapon');
             $table->string('qtd_bullets');
+            $table->string('weapon_number');
             $table->timestamps();
         });
     }

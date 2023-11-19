@@ -31,39 +31,49 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::prefix('weapon')->group(function () {
     Route::get('/', [WeaponController::class, 'index']);
     Route::post('/store', [WeaponController::class, 'store']);
-    Route::get('/{id}', [WeaponController::class, 'show']);
+    Route::get('/show/{id}', [WeaponController::class, 'show']);
     Route::delete('/delete/{id}', [WeaponController::class, 'destroy'] );
+    Route::get('/count', [WeaponController::class, 'countWeapons']);
     //Route::patch('/update/{id}', [WeaponController::class, 'update']);
 });
+
 
 Route::prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'index']);
     Route::post('/store', [UserController::class, 'store']);
-    Route::get('/{id}', [UserController::class, 'show']);
+    Route::get('/show/{id}', [UserController::class, 'show']);
     Route::delete('/delete/{id}', [UserController::class, 'destroy'] );
-    //Route::patch('/update/{id}', [UserController::class, 'update']);
+    Route::get('/count', [UserController::class, 'countUsers']);
+    //Route::patch('/update/{id}', [WeaponController::class, 'update']);
 });
+
+
+
+
 
 Route::prefix('officer')->group(function () {
     Route::get('/', [OfficerController::class, 'index']);
     Route::post('/store', [OfficerController::class, 'store']);
-    Route::get('/{id}', [OfficerController::class, 'show']);
+    Route::get('/show/{id}', [OfficerController::class, 'show']);
     Route::delete('/delete/{id}', [OfficerController::class, 'destroy'] );
+    Route::get('/count', [OfficerController::class, 'countOfficers']);
     //Route::patch('/update/{id}', [OfficerController::class, 'update']);
 });
 
 Route::prefix('receive')->group(function () {
     Route::get('/', [ReceiveController::class, 'index']);
     Route::post('/store', [ReceiveController::class, 'store']);
-    Route::get('/{id}', [ReceiveController::class, 'show']);
+    Route::get('/show/{id}', [ReceiveController::class, 'show']);
     Route::delete('/delete/{id}', [ReceiveController::class, 'destroy'] );
+    Route::get('/count', [ReceiveController::class, 'countReceives']);
    // Route::patch('/update/{id}', [ReceiveController::class, 'update']);
 });
 
 Route::prefix('leave')->group(function () {
     Route::get('/', [LeaveController::class, 'index']);
     Route::post('/store', [LeaveController::class, 'store']);
-    Route::get('/{id}', [LeaveController::class, 'show']);
+    Route::get('/show/{id}', [LeaveController::class, 'show']);
     Route::delete('/delete/{id}', [LeaveController::class, 'destroy'] );
+    Route::get('/count', [LeaveController::class, 'countLeaves']);
    // Route::patch('/update/{id}', [LeaveController::class, 'update']);
 });

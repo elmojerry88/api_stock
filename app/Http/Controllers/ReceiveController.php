@@ -24,13 +24,39 @@ class ReceiveController extends Controller
      */
     public function store(Request $request)
     {
-        $receive = $request->validated();
+        $receive = $request->only([
+            'id_officer',
+            'id_weapon',
+            'qtd_bullets',
+            'weapon_number',
+        ]);
 
-        //$weapon = Weapons::findOrfail($id);
+        $id_weapon = $receive['id_weapon'];
 
-        Receive_weapons::create($receive);
+        $id_officer = $receive['id_officer'];
 
-        event(new ReceiveStock($receive));
+        $officer = Police_officers::findOrFail($id_officer);
+
+        $weapon = Weapons::findOrFail($id_weapon);
+        
+        $weapon->increment('quantity_stock');
+
+        $data['officer'] = $officer->name;
+        $data['nip_officer'] = $officer->nip;
+        $data['weapon'] = $weapon->name ."-". $weapon->model;
+        $data['qtd_bullets'] = $request->qtd_bullets;
+        $data['weapon_number'] = $request->weapon_number;
+
+        // dd($leave);
+
+        // dd($weapon);
+        #acessar o stock e diminuir 
+        
+        receive_weapons::create($data);
+
+
+        return response('Saída registrada com sucesso');
+
 
         return response()->json('Entrada registrada com sucesso');
     }
@@ -60,5 +86,26 @@ class ReceiveController extends Controller
     public function destroy(string $id)
     {
         Receive_weapons::findOrFail($id)->delete();
+    }
+
+    public function countReceives()
+    {
+        $receive = Receive_weapons::count();
+
+        return response($receive);
+    }
+
+    public function receive()
+    {
+        #criar uma tabela
+
+
+        
+        #chama a tabela de armas 
+
+        #aumena a quantidade 
+
+
+
     }
 }

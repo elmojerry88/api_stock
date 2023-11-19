@@ -67,4 +67,11 @@ class OfficerController extends Controller
 
         return response()->json('Agente eliminado com sucesso');
     }
+
+    public function countOfficers()
+    {
+        $officer = Police_officers::count();
+
+        return response($officer);
+    }
 }
