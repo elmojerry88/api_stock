@@ -6,12 +6,12 @@ use App\Events\ReceiveStock;
 use Illuminate\Http\Request;
 use App\Models\Receive_weapons;
 use App\Models\Weapons;
+use App\Models\Police_officers;
 
 class ReceiveController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+  
+    
     public function index()
     {
         $receive = Receive_weapons::all();
@@ -19,51 +19,50 @@ class ReceiveController extends Controller
         return response()->json($receive);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   
+
     public function store(Request $request)
     {
-        $receive = $request->only([
-            'id_officer',
-            'id_weapon',
-            'qtd_bullets',
-            'weapon_number',
+        $leave = $request->only([
+            'officerReceive',
+            'weaponReceive',
+            'qtdBulletsReceive',
+            'weaponNumberReceive',
         ]);
 
-        $id_weapon = $receive['id_weapon'];
+        $id_weapon = $request->weaponReceive;
 
-        $id_officer = $receive['id_officer'];
+        $officer = $request->officerReceive;
 
-        $officer = Police_officers::findOrFail($id_officer);
+        $officer = Police_officers::where('name', $officer)->first();
 
-        $weapon = Weapons::findOrFail($id_weapon);
+        if (!$officer)
         
-        $weapon->increment('quantity_stock');
-
-        $data['officer'] = $officer->name;
-        $data['nip_officer'] = $officer->nip;
-        $data['weapon'] = $weapon->name ."-". $weapon->model;
-        $data['qtd_bullets'] = $request->qtd_bullets;
-        $data['weapon_number'] = $request->weapon_number;
-
-        // dd($leave);
-
-        // dd($weapon);
-        #acessar o stock e diminuir 
+        {
+            return response("Usuário não encontrado", 404) ;
+            die;
+        }
         
-        receive_weapons::create($data);
+        else{
 
+            $weapon = Weapons::findOrFail($id_weapon);
+        
+            $weapon->increment('quantity_stock');
+    
+            $data['officer'] = $officer->name;
+            $data['nip_officer'] = $officer->nip;
+            $data['weapon'] = $weapon->name ."-". $weapon->model;
+            $data['qtd_bullets'] = $request->qtdBulletsReceive;
+            $data['weapon_number'] = $request->weaponNumberReceive;
+            
+            Receive_weapons::create($data);
 
-        return response('Saída registrada com sucesso');
-
-
-        return response()->json('Entrada registrada com sucesso');
+            return response('Entrada registrada com sucesso');
+        }
+        
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(string $id)
     {
         $receive = Receive_weapons::findOrFail($id)->first();
@@ -72,21 +71,13 @@ class ReceiveController extends Controller
     }
     
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         Receive_weapons::findOrFail($id)->delete();
     }
+
+
 
     public function countReceives()
     {
@@ -95,17 +86,4 @@ class ReceiveController extends Controller
         return response($receive);
     }
 
-    public function receive()
-    {
-        #criar uma tabela
-
-
-        
-        #chama a tabela de armas 
-
-        #aumena a quantidade 
-
-
-
-    }
 }

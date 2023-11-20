@@ -83,42 +83,42 @@ class DatabaseSeeder extends Seeder
             'name' => 'Nascimento',
             'division' => 'PIR',
             'category' => 'Capitão',
-            'gender' => 'masculino',
+            
             'nip' => "00012384729",
         ]);
         \App\Models\Police_officers::create([
             'name' => 'Cardoso',
             'division' => 'SIC',
             'category' => 'Cabo',
-            'gender' => 'masculino',
+            
             'nip' => "00012385629",
         ]);
         \App\Models\Police_officers::create([
             'name' => 'Bento',
             'division' => 'Ordem pública',
             'category' => 'Sargento',
-            'gender' => 'masculino',
+            
             'nip' => "00012384848893",
         ]);
         \App\Models\Police_officers::create([
             'name' => 'Erica',
             'division' => 'PIR',
             'category' => 'Capitão',
-            'gender' => 'feminino',
+        
             'nip' => "000123843050533",
         ]);
         \App\Models\Police_officers::create([
             'name' => 'Delgada',
             'division' => 'SIC',
             'category' => 'Cabo',
-            'gender' => 'feminino',
+        
             'nip' => "00012386529",
         ]);
         \App\Models\Police_officers::create([
             'name' => 'Bento',
             'division' => 'Ordem pública',
             'category' => 'Sargento',
-            'gender' => 'feminino',
+        
             'nip' => "000123848444393",
         ]);
 

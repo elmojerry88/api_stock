@@ -25,7 +25,8 @@ class OfficerStoreRequest extends FormRequest
             'name' => 'required',
             'division' => 'required',
             'category' => 'required',
-            'nip' => 'required | unique:police_officers',
+            'nip' => 'nullable',
+            
         ];
     }
 }
