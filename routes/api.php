@@ -34,6 +34,7 @@ Route::prefix('weapon')->group(function () {
     Route::get('/show/{id}', [WeaponController::class, 'show']);
     Route::delete('/delete/{id}', [WeaponController::class, 'destroy'] );
     Route::get('/count', [WeaponController::class, 'countWeapons']);
+    Route::get('/sum', [WeaponController::class, 'sum']);
     //Route::patch('/update/{id}', [WeaponController::class, 'update']);
 });
 

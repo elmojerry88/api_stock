@@ -67,4 +67,13 @@ class WeaponController extends Controller
 
         return response($weapons);
     }
+
+    public function sum()
+    {
+        $weapon = Weapons::selectRaw('SUM(quantity_stock)')->get();
+
+        $weapon = $weapon[0]['sum'];
+
+        return response($weapon);
+    }
 }
