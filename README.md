@@ -1,4 +1,4 @@
-# Back-End da Aplicação de controlo de estoque
+# Back-End da Aplicação de controle de estoque
 
 ### Desenvolvido por: Elmo Jerry Imperial Leitão
 
