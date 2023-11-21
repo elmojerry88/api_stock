@@ -1,66 +1,99 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Back-End da Aplicação de controlo de estoque
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Desenvolvido por: Elmo Jerry Imperial Leitão
 
-## About Laravel
+## Requisitos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Docker - para baixar [clique aqui](https://docs.docker.com/engine/install/).
+- PHP 8.2- para baixar [clique aqui](https://www.php.net/downloads), caso tiver a usar o linux é necessário instalar todas as libs do php.
+- Composer - para baixar [clique aqui](https://getcomposer.org/download/)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Instalação:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Após instalar o requisitos de instalação, clique em *code* e baixe o arquivo.
+- Abra a sua linha de comando, entre na pasta da aplicação, e execute:
 
-## Learning Laravel
+```bash
+composer install
+```
+Esse comado irá instalar todas as dependencias necessárias para rodar a aplicação.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Após a instalação, crie um arquivo .env e copie todos os arquivos do .env.example para dentro do .env
+- Inicie o docker, caso não saiba usar o docker [clique aqui ](https://docker-curriculum.com/) para seguir um tutorial.
+- Abra a sua linha de comando dentro da pasta da aplicação e execute:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+php artisan key:generate
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Esse comando irá gerar uma chaves encriptada para aplicação dentro do arquivo .env em APP_KEY.
 
-## Laravel Sponsors
+- Ainda na sua linha de comando dentro da pasta execute:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+php artisan migrate
+```
 
-### Premium Partners
+Esse comando criará todas as tabelas no banco de dados.
+É importante destacar que deve ter instalado o docker para conseguir fazer o banco de dados funcionar.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- Depois de executar as migrações, execute:
 
-## Contributing
+```bash
+php artisan db:seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Esse comando irá criar usuários, armas e agentes no banco de dados.
 
-## Code of Conduct
+- Por padrão a aplicação já estará no ar dentro de um container docker.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- A aplicação estará rodar em [http://localhost:8000](http://localhost:8000).
 
-## Security Vulnerabilities
+## Rotas da API:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+A URL base para acessar os endpoints da api é  [http://localhost:8000/api/](http://localhost:8000/api/)
+As rotas disponiveis na api são:
 
-## License
+A URL base para acessar os endpoints é  [http://localhost:8000/api/](http://localhost:8000/api/)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### User:
+
+- ´/user/´
+- ´/user/store´
+- ´user/count´
+
+### Police officer:
+
+- ´/officer/´
+- ´/officer/store´
+- ´/officer/count´
+
+### Leave:
+
+- ´/leave/´
+- ´/leave/store´
+- ´/leave/count´
+
+### Receive:
+
+- ´/receive/´
+- ´/receive/store´
+- ´/receive/count´
+
+
+### Weapon:
+
+- ´/weapon/´
+- ´/weapon/store´
+- ´/weapon/count´
+- ´/weapon/sum´
+
+
+
+
+
+
+## NOTA:
+
+- É necessário que tenha baixado o Front-End da aplicação, para uma experiência completa!
+- Essa aplicação sofrerá alterações, verique as branchs... pode ser que tenha uma nova versão da aplicação.

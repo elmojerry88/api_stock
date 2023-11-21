@@ -32,42 +32,6 @@ class WeaponController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $weapon = Weapons::findOrFail($id);
-
-        return response()->json($weapon);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(WeaponUpdateRequest $request, string $id)
-    {
-        $weapon = Weapons::findOrFail($id)->update($request->validated());
-        return response()->json('Arma atualizada com sucesso');
-
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        Weapons::findOrFail($id)->delete();
-    }
-
-    public function countWeapons()
-    {
-        $weapons = Weapons::count();
-
-        return response($weapons);
-    }
-
     public function sum()
     {
         $weapon = Weapons::selectRaw('SUM(quantity_stock)')->get();
@@ -76,4 +40,44 @@ class WeaponController extends Controller
 
         return response($weapon);
     }
+
+    /**
+     * Display the specified resource.
+     */
+    // public function show(string $id)
+    // {
+    //     $weapon = Weapons::findOrFail($id);
+
+    //     return response()->json($weapon);
+    // }
+
+ 
+
+    /**
+     * Update the specified resource in storage.
+     */
+    // public function update(WeaponUpdateRequest $request, string $id)
+    // {
+    //     $weapon = Weapons::findOrFail($id)->update($request->validated());
+    //     return response()->json('Arma atualizada com sucesso');
+
+
+    // }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    // public function destroy(string $id)
+    // {
+    //     Weapons::findOrFail($id)->delete();
+    // }
+
+    // public function countWeapons()
+    // {
+    //     $weapons = Weapons::count();
+
+    //     return response($weapons);
+    // }
+
+
 }

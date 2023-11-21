@@ -39,7 +39,7 @@ class ReceiveController extends Controller
         if (!$officer)
         
         {
-            return response("Usuário não encontrado", 404) ;
+            return response("Agente não encontrado", 404) ;
             die;
         }
         
@@ -57,7 +57,7 @@ class ReceiveController extends Controller
             
             Receive_weapons::create($data);
 
-            return response('Entrada registrada com sucesso');
+            return response('Entrada registrada com sucesso', 200);
         }
         
     }

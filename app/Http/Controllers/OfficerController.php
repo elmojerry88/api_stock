@@ -41,26 +41,7 @@ class OfficerController extends Controller
         return response()->json($officers);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        // dd($request->only([
-        //     'name',
-        //     'division',
-        //     'nip'
 
-        // ]));
-        
-        // $officers = Police_officers::findOrFail($id)->update($request->validated());
-
-        // return response()->json('Agente atualizado com sucesso');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         Police_officers::findOrFail($id)->delete();
@@ -68,9 +49,12 @@ class OfficerController extends Controller
         return response()->json('Agente eliminado com sucesso');
     }
 
+
     public function countOfficers()
     {
-        $officer = Police_officers::count();
+        $officer = Police_officers::all();
+
+        $officer = $officer->count();
 
         return response($officer);
     }
