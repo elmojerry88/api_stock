@@ -10,7 +10,7 @@
 
 ## Instalação:
 
-- Após instalar o requisitos de instalação, clique em *code* e baixe o arquivo.
+- Após instalar os requisitos de instalação, clique em *code* e baixe o arquivo.
 - Abra a sua linha de comando, entre na pasta da aplicação, e execute:
 
 ```bash
