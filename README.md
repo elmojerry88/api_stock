@@ -52,7 +52,6 @@ Esse comando irá criar usuários, armas e agentes no banco de dados.
 ## Rotas da API:
 
 A URL base para acessar os endpoints da api é  [http://localhost:8000/api/](http://localhost:8000/api/)
-As rotas disponiveis na api são:çlnbvv 
 
 ### User:
 
