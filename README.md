@@ -7,6 +7,7 @@
 - Docker - para baixar [clique aqui](https://docs.docker.com/engine/install/).
 - PHP 8.2- para baixar [clique aqui](https://www.php.net/downloads), caso tiver a usar o linux é necessário instalar todas as libs do php.
 - Composer - para baixar [clique aqui](https://getcomposer.org/download/)
+- Front-End - para baixar [clique aqui](https://github.com/elmojerry88/stock-app)
 
 ## Instalação:
 
@@ -48,6 +49,19 @@ Esse comando irá criar usuários, armas e agentes no banco de dados.
 - Por padrão a aplicação já estará no ar dentro de um container docker.
 
 - A aplicação estará rodar em [http://localhost:8000](http://localhost:8000).
+
+## Login:
+
+- Após seguir a os passos de instalação, será possivel fazer login no Front-End (é importante que tenha também o Front-End para baixar [clique aqui](https://github.com/elmojerry88/stock-app))
+
+# Usuários:
+
+- Email: elmojerry@example.com | password: 123456789
+- Email: paulofernandes@example.com | password: 123456789
+- Email: isabeldaniela@example.com | password: 123456789
+- Email: pauladaniela@example.com | password: 123456789
+
+
 
 ## Rotas da API:
 
