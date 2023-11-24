@@ -11,7 +11,7 @@
 
 ## Instalação:
 
-- Após instalar os requisitos de instalação, clique em *code* e baixe o arquivo.
+- Após instalar os requisitos, clique em *code* e baixe o arquivo.
 - Abra a sua linha de comando, entre na pasta da aplicação, e execute:
 
 ```bash
@@ -52,14 +52,14 @@ Esse comando irá criar usuários, armas e agentes no banco de dados.
 
 ## Login:
 
-- Após seguir a os passos de instalação, será possivel fazer login no Front-End (é importante que tenha também o Front-End para baixar [clique aqui](https://github.com/elmojerry88/stock-app))
+- Após seguir os passos de instalação, será possivel fazer login no Front-End (é importante que tenha também o Front-End para baixar [clique aqui](https://github.com/elmojerry88/stock-app))
 
-# Usuários:
+### Usuários:
 
-- Email: elmojerry@example.com | password: 123456789
-- Email: paulofernandes@example.com | password: 123456789
-- Email: isabeldaniela@example.com | password: 123456789
-- Email: pauladaniela@example.com | password: 123456789
+- Email: *elmojerry@example.com* | password: *123456789*
+- Email: *paulofernandes@example.com* | password: *123456789*
+- Email: *isabeldaniela@example.com* | password: *123456789*
+- Email: *pauladaniela@example.com* | password: *123456789*
 
 
 
