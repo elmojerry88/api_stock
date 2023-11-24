@@ -62,6 +62,12 @@ Esse comando irá criar usuários, armas e agentes no banco de dados.
 - Email: *pauladaniela@example.com* | password: *123456789*
 
 
+### Criando um novo usuário:
+
+- A aplicação não foi preparada para retornar notificações, adicionarei na versão 2.1 da aplicação. Verique as branchs para ver se existe atualizações.
+- Após criar um usuário é possivel que o seu usuário foi criado com sucesso, volte para a tela de _login_ e efectua o login com o seu usuário!.
+
+
 ## Registrando saídas e entradas:
 
 - Para registrar saídas e entradas é necessário que o agente esteja registrado no banco de dados, por padrão a aplicação não notifica erros... isso adicionarei na versão 2.1 da aplicação, verique as branchs para baixar a versão atualizada.
