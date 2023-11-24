@@ -65,7 +65,7 @@ Esse comando irá criar usuários, armas e agentes no banco de dados.
 ### Criando um novo usuário:
 
 - A aplicação não foi preparada para retornar notificações, adicionarei na versão 2.1 da aplicação. Verique as branchs para ver se existe atualizações.
-- Após criar um usuário é possivel que o seu usuário foi criado com sucesso, volte para a tela de _login_ e efectua o login com o seu usuário!.
+- Após criar um usuário é possivel que o seu usuário foi criado com sucesso, volte para a tela de _login_ e efectue o login com o seu usuário!.
 
 
 ## Registrando saídas e entradas:
@@ -80,9 +80,6 @@ Esse comando irá criar usuários, armas e agentes no banco de dados.
 - Nome: *Erica*
 - Nome: *Delgada*
 - Nome: *Elmo*
-
-
-
 
 
 ## Rotas da API:
