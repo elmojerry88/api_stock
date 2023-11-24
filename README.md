@@ -62,6 +62,22 @@ Esse comando irá criar usuários, armas e agentes no banco de dados.
 - Email: *pauladaniela@example.com* | password: *123456789*
 
 
+## Registrando saídas e entradas:
+
+- Para registrar saídas e entradas é necessário que o agente esteja registrado no banco de dados, por padrão a aplicação não notifica erros... isso adicionarei na versão 2.1 da aplicação, verique as branchs para baixar a versão atualizada.
+
+### Agentes:
+
+- Nome: *Nascimento*
+- Nome: *Cardoso*
+- Nome: *Bento*
+- Nome: *Erica*
+- Nome: *Delgada*
+- Nome: *Elmo*
+
+
+
+
 
 ## Rotas da API:
 

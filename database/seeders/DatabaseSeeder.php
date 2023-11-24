@@ -115,7 +115,7 @@ class DatabaseSeeder extends Seeder
             'nip' => "00012386529",
         ]);
         \App\Models\Police_officers::create([
-            'name' => 'Bento',
+            'name' => 'Elmo',
             'division' => 'Ordem pública',
             'category' => 'Sargento',
         
