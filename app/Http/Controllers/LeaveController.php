@@ -15,7 +15,7 @@ class LeaveController extends Controller
 
     public function index()
     {
-        $leave = Leave_weapons::all();
+        $leave = Leave_weapons::limit(5)->orderBy('id', 'desc')->get();
 
         return response()->json($leave);
     }
@@ -41,27 +41,37 @@ class LeaveController extends Controller
             return response("Usuário não encontrado", 404) ;
             die;
         }
-        
-        else{
 
-            $weapon = Weapons::findOrFail($id_weapon);
+        $weapon = Weapons::findOrFail($id_weapon);
+
+        if (!$weapon){
+            return response('Arma não encontrada', 404);
+            die;
+        }
         
-            $weapon->decrement('quantity_stock');
+        if($weapon->quantity_stock >= 0){
+
+            return response('Arma indisponivel em estoque', 406);
+            die;
+
+        }
+        
+        $weapon->decrement('quantity_stock');
     
            
     
-            $data['officer'] = $officer->name;
-            $data['nip_officer'] = $officer->nip;
-            $data['weapon'] = $weapon->name ."-". $weapon->model;
-            $data['qtd_bullets'] = $request->qtdBulletsLeave;
-            $data['weapon_number'] = $request->weaponNumberLeave;
+        $data['officer'] = $officer->name;
+        $data['nip_officer'] = $officer->nip;
+        $data['weapon'] = $weapon->name ."-". $weapon->model;
+        $data['qtd_bullets'] = $request->qtdBulletsLeave;
+        $data['weapon_number'] = $request->weaponNumberLeave;
 
             
-            Leave_weapons::create($data);
+        Leave_weapons::create($data);
     
     
-            return response('Saída registrada com sucesso');
-        }
+        return response('Saída registrada com sucesso');
+        
     }
 
     public function countLeaves()
