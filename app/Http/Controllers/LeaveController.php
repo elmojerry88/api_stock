@@ -38,7 +38,7 @@ class LeaveController extends Controller
 
 
         if (!$officer){
-            return response("Usuário não encontrado", 404) ;
+            return response("Agente não encontrado", 404) ;
             die;
         }
 

@@ -26,6 +26,7 @@ class UserStoreRequest extends FormRequest
             'second_name' => 'required | min:3 | max:20',
             'email' => ['email','required'],
             'password' => ['required'],
+            'gender' => 'required'
         ];
     }
 }
