@@ -7,12 +7,9 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        
 
         \App\Models\User::create([
              'first_name' => 'Elmo',
@@ -44,83 +41,156 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt("123456789"),
             'gender' =>'feminino'
         ]);
+
+
         \App\Models\Weapons::create([
             'name' => 'AK',
             'model' => '47',
-            'type' => 'Fuzil de assalto',
+            'type' => 'FUZIL DE ASSALTO',
             'qtd_weapons_bullets' => 75,
             'quantity_stock' => 10,
         ]);
         \App\Models\Weapons::create([
-            'name' => 'AK',
-            'model' => '74',
-            'type' => 'Fuzil de assalto',
+            'name' => 'CARABINA BRIGADE OD',
+            'model' => 'GREEN CAL 9 MM',
+            'type' => 'FUZIL DE ASSALTO',
             'qtd_weapons_bullets' => 75,
             'quantity_stock' => 30,
         ]);
         \App\Models\Weapons::create([
-            'name' => 'AN',
-            'model' => '94',
-            'type' => 'Fuzil de assalto',
+            'name' => 'GLOCK',
+            'model' => 'G-19',
+            'type' => 'PISTOLA',
             'qtd_weapons_bullets' => 75,
             'quantity_stock' => 60,
         ]);
         \App\Models\Weapons::create([
-            'name' => 'AK',
-            'model' => '12',
-            'type' => 'Fuzil de assalto',
+            'name' => 'SIG SAUER',
+            'model' => 'P320 X',
+            'type' => 'PISTOLA',
             'qtd_weapons_bullets' => 35,
             'quantity_stock' => 2,
         ]);
         \App\Models\Weapons::create([
-            'name' => 'AKE',
-            'model' => '971',
-            'type' => 'Fuzil de assalto',
+            'name' => 'RIFLE M1A',
+            'model' => 'SCOUT SQUAD NEW WAL',
+            'type' => 'SEMI-AUTOMATICO',
             'qtd_weapons_bullets' => 40,
             'quantity_stock' => 5,
         ]);
+
+
+
+
         \App\Models\Police_officers::create([
             'name' => 'Nascimento',
             'division' => 'PIR',
             'category' => 'Capitão',
-            
             'nip' => "00012384729",
         ]);
         \App\Models\Police_officers::create([
             'name' => 'Cardoso',
             'division' => 'SIC',
             'category' => 'Cabo',
-            
             'nip' => "00012385629",
         ]);
         \App\Models\Police_officers::create([
             'name' => 'Bento',
             'division' => 'Ordem pública',
             'category' => 'Sargento',
-            
-            'nip' => "00012384848893",
+                'nip' => "00012384848893",
         ]);
         \App\Models\Police_officers::create([
             'name' => 'Erica',
             'division' => 'PIR',
             'category' => 'Capitão',
-        
             'nip' => "000123843050533",
         ]);
         \App\Models\Police_officers::create([
             'name' => 'Delgada',
             'division' => 'SIC',
             'category' => 'Cabo',
-        
             'nip' => "00012386529",
         ]);
         \App\Models\Police_officers::create([
             'name' => 'Elmo',
-            'division' => 'Ordem pública',
-            'category' => 'Sargento',
-        
+            'division' => 'SIC',
+            'category' => 'Comandante',
             'nip' => "000123848444393",
         ]);
+
+
+
+
+
+        \App\Models\Leave_weapons::create([
+            'officer' => 'Elmo',
+            'nip_officer' => '000123848444393',
+            'qtd_bullets' => '20',
+            'weapon' => 'GLOCK-G19',
+            'weapon_number' => '3030LA18922',
+        ]);
+        \App\Models\Leave_weapons::create([
+            'officer' => 'Delgada',
+            'nip_officer' => '00012386529',
+            'qtd_bullets' => '25',
+            'weapon' => 'AK-47',
+            'weapon_number' => '7080LA2390',
+        ]);
+        \App\Models\Leave_weapons::create([
+            'officer' => 'Nascimento',
+            'nip_officer' => '00012384729',
+            'qtd_bullets' => '30',
+            'weapon' => 'CARABINA BRIGADE OD-GREEN CAL 9 MM',
+            'weapon_number' => '7813LA09831',
+        ]);
+        \App\Models\Leave_weapons::create([
+            'officer' => 'Cardoso',
+            'nip_officer' => '00012385629',
+            'qtd_bullets' => '5',
+            'weapon' => 'RIFLE M1A-SCOUT SQUAD NEW WAL',
+            'weapon_number' => '0938LA928374',
+        ]);
+        \App\Models\Leave_weapons::create([
+            'officer' => 'Bento',
+            'nip_officer' => '00012385629',
+            'qtd_bullets' => '45',
+            'weapon' => 'SIG SAUER-P320 X',
+            'weapon_number' => '00012384848893',
+        ]);
+
+
+        
+
+        \App\Models\Receive_weapons::create([
+            'officer' => 'Elmo',
+            'nip_officer' => '000123848444393',
+            'qtd_bullets' => '20',
+            'weapon' => 'RIFLE M1A-SCOUT SQUAD NEW WAL',
+            'weapon_number' => '0938LA928374',
+        ]);
+        \App\Models\Receive_weapons::create([
+            'officer' => 'Delgada',
+            'nip_officer' => '00012386529',
+            'qtd_bullets' => '25',
+            'weapon' => 'CARABINA BRIGADE OD-GREEN CAL 9 MM',
+            'weapon_number' => '7813LA09831',
+        ]);
+        \App\Models\Receive_weapons::create([
+            'officer' => 'Nascimento',
+            'nip_officer' => '00012384729',
+            'qtd_bullets' => '60',
+            'weapon' => 'AK-47',
+            'weapon_number' => '8594LA4038483',
+        ]);
+        \App\Models\Receive_weapons::create([
+            'officer' => 'Cardoso',
+            'nip_officer' => '00012385629',
+            'qtd_bullets' => '23',
+            'weapon' => 'GLOCK-G19',
+            'weapon_number' => '0932LA20843',
+        ]);
+    
 
         
    
