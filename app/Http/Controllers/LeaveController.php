@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 use App\Models\Leave_weapons;
 use App\Models\Weapons;
 use App\Models\Police_officers;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
+use App\Models\Registers;
+
 
 class LeaveController extends Controller
 {
@@ -49,11 +52,25 @@ class LeaveController extends Controller
             die;
         }
         
-        if($weapon->quantity_stock >= 0){
+        if($weapon->quantity_stock <= 0){
 
             return response('Arma indisponivel em estoque', 406);
             die;
 
+        }
+
+        $leave = Leave_weapons::where('weapon_number', $request->weaponNumberLeave)->first();
+
+        if($leave){
+            return response('Não foi possível completar essa operação, arma já registrada', 406);
+            die;
+        }
+
+        $register = Registers::where('weapon_number', $request->weaponNumberLeave)->first();
+
+        if($register){
+            return response('Não foi possível completar essa operação, arma já registrada', 406);
+            die;
         }
         
         $weapon->decrement('quantity_stock');
@@ -68,6 +85,8 @@ class LeaveController extends Controller
 
             
         Leave_weapons::create($data);
+
+        Registers::create($data);
     
     
         return response('Saída registrada com sucesso');
