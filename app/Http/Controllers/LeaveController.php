@@ -60,15 +60,15 @@ class LeaveController extends Controller
         }
 
         $leave = Leave_weapons::where('weapon_number', $request->weaponNumberLeave)->first();
-
-        if($leave->weapon_number === $request->weaponNumberLeave){
+ 
+        if($leave){
             return response('Não foi possível completar essa operação, arma já registrada', 406);
             die;
         }
 
         $register = Registers::where('weapon_number', $request->weaponNumberLeave)->first();
 
-        if($register->weapon_number === $request->weaponNumberLeave){
+        if($register){
             return response('Não foi possível completar essa operação, arma já registrada', 406);
             die;
         }
