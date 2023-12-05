@@ -59,13 +59,6 @@ class LeaveController extends Controller
 
         }
 
-        $leave = Leave_weapons::where('weapon_number', $request->weaponNumberLeave)->first();
- 
-        if($leave){
-            return response('Não foi possível completar essa operação, arma já registrada', 406);
-            die;
-        }
-
         $register = Registers::where('weapon_number', $request->weaponNumberLeave)->first();
 
         if($register){

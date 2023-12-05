@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Receive_weapons;
 use App\Models\Weapons;
 use App\Models\Police_officers;
+use App\Models\Leave_weapons;
 
 class ReceiveController extends Controller
 {
@@ -36,29 +37,62 @@ class ReceiveController extends Controller
 
         $officer = Police_officers::where('name', $officer)->first();
 
-        if (!$officer)
-        
-        {
+        if (!$officer){
             return response("Agente não encontrado", 404) ;
             die;
         }
-        
-        else{
 
-            $weapon = Weapons::findOrFail($id_weapon);
-        
-            $weapon->increment('quantity_stock');
     
-            $data['officer'] = $officer->name;
-            $data['nip_officer'] = $officer->nip;
-            $data['weapon'] = $weapon->name ."-". $weapon->model;
-            $data['qtd_bullets'] = $request->qtdBulletsReceive;
-            $data['weapon_number'] = $request->weaponNumberReceive;
-            
-            Receive_weapons::create($data);
+        
+       
+        $weapon = Weapons::findOrFail($id_weapon);
 
-            return response('Entrada registrada com sucesso', 200);
+       if (!$weapon){
+            return response('Arma não encontrada', 404);
+            die;
         }
+       
+        
+        
+        $LeaveCheck = Leave_weapons::where('weapon_number', $request->weaponNumberReceive)->first();
+
+        if (!$LeaveCheck){
+            return response('Não foi possível completar a operação, saída de arma não registrada', 406);
+            die;
+        }
+
+        
+        
+        $register = Registers::where('wepon_number', $request->weaponNumberReceive)->first();
+
+        if(!$register){
+            return response('Registro de arma não encontrado', 404);
+            die;
+        }
+        
+        $weapon->increment('quantity_stock');
+    
+        
+        $data['officer'] = $officer->name;
+        $data['nip_officer'] = $officer->nip;
+        $data['weapon'] = $weapon->name ."-". $weapon->model;
+        $data['qtd_bullets'] = $request->qtdBulletsReceive;
+        $data['weapon_number'] = $request->weaponNumberReceive;
+            
+        
+        Registers::create([
+            'officer' => $officer->name,
+            'nip_officer' => $officer->nip,
+            'weapon' => $weapon->name . "-" . $weapon->model,
+            'qtd_bullets' => $request->qtdBulletsReceive,
+            'weapon_number' => $request->weaponNumberReceive,
+            'status' => 'entregue'
+        ]);
+
+        Receive_weapons::create($data);
+
+        return response('Entrada registrada com sucesso', 200);
+       
         
     }
 
