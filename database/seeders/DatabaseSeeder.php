@@ -190,6 +190,51 @@ class DatabaseSeeder extends Seeder
             'weapon' => 'GLOCK-G19',
             'weapon_number' => '0932LA20843',
         ]);
+
+
+
+
+        \App\Models\Registers::create([
+            'officer' => 'Elmo',
+            'nip_officer' => '000123848444393',
+            'qtd_bullets' => '20',
+            'weapon' => 'GLOCK-G19',
+            'weapon_number' => '3030LA18922',
+            'status' => 'entregue'
+        ]);
+        \App\Models\Registers::create([
+            'officer' => 'Delgada',
+            'nip_officer' => '00012386529',
+            'qtd_bullets' => '25',
+            'weapon' => 'AK-47',
+            'weapon_number' => '7080LA2390',
+            'status' => 'não entregue'
+        ]);
+        \App\Models\Registers::create([
+            'officer' => 'Nascimento',
+            'nip_officer' => '00012384729',
+            'qtd_bullets' => '30',
+            'weapon' => 'CARABINA BRIGADE OD-GREEN CAL 9 MM',
+            'weapon_number' => '7813LA09831',
+            'status' => 'entregue'
+        ]);
+        \App\Models\Registers::create([
+            'officer' => 'Cardoso',
+            'nip_officer' => '00012385629',
+            'qtd_bullets' => '5',
+            'weapon' => 'RIFLE M1A-SCOUT SQUAD NEW WAL',
+            'weapon_number' => '0938LA928374',
+            'status' => 'não entregue'
+        ]);
+        \App\Models\Registers::create([
+            'officer' => 'Bento',
+            'nip_officer' => '00012385629',
+            'qtd_bullets' => '45',
+            'weapon' => 'SIG SAUER-P320 X',
+            'weapon_number' => '00012384848893',
+            'status' => 'entregue'
+        ]);
+
     
 
         

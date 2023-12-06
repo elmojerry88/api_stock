@@ -8,6 +8,7 @@ use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReceiveController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,5 +77,15 @@ Route::prefix('leave')->group(function () {
     // Route::get('/show/{id}', [LeaveController::class, 'show']);
     // Route::delete('/delete/{id}', [LeaveController::class, 'destroy'] );
     Route::get('/count', [LeaveController::class, 'countLeaves']);
+   // Route::patch('/update/{id}', [LeaveController::class, 'update']);
+});
+
+
+Route::prefix('register')->group(function () {
+    Route::get('/', [RegisterController::class, 'index']);
+    //Route::post('/store', [RegisterController::class, 'store']);
+    // Route::get('/show/{id}', [LeaveController::class, 'show']);
+    // Route::delete('/delete/{id}', [LeaveController::class, 'destroy'] );
+    //Route::get('/count', [RegisterController::class, 'countLeaves']);
    // Route::patch('/update/{id}', [LeaveController::class, 'update']);
 });
