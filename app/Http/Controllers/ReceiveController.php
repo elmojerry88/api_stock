@@ -8,6 +8,7 @@ use App\Models\Receive_weapons;
 use App\Models\Weapons;
 use App\Models\Police_officers;
 use App\Models\Leave_weapons;
+use App\Models\Registers;
 
 class ReceiveController extends Controller
 {
@@ -63,7 +64,9 @@ class ReceiveController extends Controller
 
         
         
-        $register = Registers::where('wepon_number', $request->weaponNumberReceive)->first();
+        $register = Registers::where('weapon_number', $request->weaponNumberReceive)
+        ->where('status', 'não entregue')
+        ->first();
 
         if(!$register){
             return response('Registro de arma não encontrado', 404);
@@ -78,16 +81,12 @@ class ReceiveController extends Controller
         $data['weapon'] = $weapon->name ."-". $weapon->model;
         $data['qtd_bullets'] = $request->qtdBulletsReceive;
         $data['weapon_number'] = $request->weaponNumberReceive;
-            
         
-        Registers::create([
-            'officer' => $officer->name,
-            'nip_officer' => $officer->nip,
-            'weapon' => $weapon->name . "-" . $weapon->model,
-            'qtd_bullets' => $request->qtdBulletsReceive,
-            'weapon_number' => $request->weaponNumberReceive,
-            'status' => 'entregue'
-        ]);
+        $status['status'] = 'entregue';
+        
+        Registers::where('weapon_number', $request->weaponNumberReceive)
+        ->where('status' ,'não entregue')
+        ->update(['status' => 'entregue']);
 
         Receive_weapons::create($data);
 

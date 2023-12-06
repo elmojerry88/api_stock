@@ -59,11 +59,17 @@ class LeaveController extends Controller
 
         }
 
-        $register = Registers::where('weapon_number', $request->weaponNumberLeave)->first();
+        $register = Registers::where('weapon_number', $request->weaponNumberLeave)
+        ->where('status', 'não entregue')
+        ->first();
 
         if($register){
-            return response('Não foi possível completar essa operação, arma já registrada', 406);
-            die;
+
+            if($register->status === 'não entregue' && $register->weapon_number === $request->weaponNumberLeave){
+                return response('Não foi possível completar essa operação, arma já registrada', 406);
+                die;
+            }
+         
         }
         
         $weapon->decrement('quantity_stock');
