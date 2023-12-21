@@ -26,17 +26,17 @@ class ReceiveController extends Controller
     public function store(Request $request)
     {
         $leave = $request->only([
-            'officerReceive',
             'weaponReceive',
             'qtdBulletsReceive',
             'weaponNumberReceive',
+            'nipReceive'
         ]);
 
         $id_weapon = $request->weaponReceive;
 
-        $officer = $request->officerReceive;
+        $officer = $request->nipReceive;
 
-        $officer = Police_officers::where('name', $officer)->first();
+        $officer = Police_officers::where('nip', $officer)->first();
 
         if (!$officer){
             return response("Agente não encontrado", 404) ;
@@ -71,6 +71,10 @@ class ReceiveController extends Controller
         if(!$register){
             return response('Registro de arma não encontrado', 404);
             die;
+        }
+
+        if ($register->nip_officer != $officer->nip ){
+            return response('O agente não corresponde com o registro', 406);
         }
         
         $weapon->increment('quantity_stock');

@@ -27,7 +27,7 @@ class LeaveController extends Controller
     public function store(Request $request)
     {
         $leave = $request->only([
-            'officerLeave',
+            'nipLeave',
             'weaponLeave',
             'qtdBulletsLeave',
             'weaponNumberLeave',
@@ -35,9 +35,9 @@ class LeaveController extends Controller
 
         $id_weapon = $request->weaponLeave;
 
-        $officer = $request->officerLeave;
+        $officer = $request->nipLeave;
 
-        $officer = Police_officers::where('name', $officer)->first();
+        $officer = Police_officers::where('nip', $officer)->first();
 
 
         if (!$officer){
